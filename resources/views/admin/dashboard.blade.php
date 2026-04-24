@@ -1,421 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
-
-  <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <title>Lugx Gaming Shop HTML5 Template</title>
-
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard PPDB</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Bootstrap core CSS -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <style>
+        body {
+            background: #f4f6fb;
+        }
 
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: linear-gradient(180deg, #2b6ef2, #1c4ed8);
+            color: white;
+            position: fixed;
+        }
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
-<link rel="stylesheet" href="{{ asset('css/flex-slider.css') }}">
-<link rel="stylesheet" href="{{ asset('css/fontawesome.css') }}">
-<link rel="stylesheet" href="{{ asset('css/owl.css') }}">
-<link rel="stylesheet" href="{{ asset('css/templatemo-lugx-gaming.css') }}">
-<!--
+        .sidebar a {
+            color: white;
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none;
+        }
 
-TemplateMo 589 lugx gaming
+        .sidebar a:hover {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+        }
 
-https://templatemo.com/tm-589-lugx-gaming
+        .content {
+            margin-left: 260px;
+            padding: 20px;
+        }
 
--->
-  </head>
+        .card-box {
+            border-radius: 15px;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
 
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            background: #2b6ef2;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+
+        .status-diterima {
+            background: #d1fae5;
+            color: #059669;
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+        }
+
+        .status-proses {
+            background: #dbeafe;
+            color: #2563eb;
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+        }
+
+        .status-diterima {
+            background: #d1fae5;
+            color: #059669;
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+      }
+
+      .status-pending {
+          background: #fef3c7;
+          color: #d97706;
+          padding: 5px 10px;
+          border-radius: 10px;
+          font-size: 12px;
+      }
+
+      .status-ditolak {
+          background: #fee2e2;
+          color: #dc2626;
+          padding: 5px 10px;
+          border-radius: 10px;
+          font-size: 12px;
+}
+    </style>
+</head>
 <body>
 
-  <!-- ***** Preloader Start ***** -->
-  
+<div class="sidebar">
+    <h4 class="p-3">PPDB Admin</h4>
+    <a href="{{ route('admin.dashboard') }}">Dashboard</a>
+    <a href="{{ route('datasiswa.index') }}">Data Siswa</a>
+    <a href="#">Pendaftaran</a>
+    <a href="#">Pengumuman</a>
+    <form action="{{ route('logout') }}" method="POST" style="margin: 20px;">
+    @csrf
+    <button type="submit" class="btn btn-light w-100">Logout</button>
+    </form>
+</div>
 
+<div class="content">
 
-  <!-- ***** Preloader End ***** -->
+    <h4 class="mb-4">Dashboard</h4>
 
-  <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
-                        <P style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 24px; color: #fff;">PPDB</P>
-                    </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-                      <li><a href="index.html" class="active">Home</a></li>
-                      <li><a href="shop.html">Our Shop</a></li>
-                      <li><a href="product-details.html">Product Details</a></li>
-                      <li><a href="contact.html">Contact Us</a></li>
-                      <li><a href="#">Sign In</a></li>
-                  </ul>   
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
-                </nav>
-            </div>
-        </div>
-    </div>
-  </header>
-  <!-- ***** Header Area End ***** -->
+    <div class="row g-3 mb-4">
 
-  <div class="main-banner">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 align-self-center">
-          <div class="caption header-text">
-            <h6>Welcome to lugx</h6>
-            <h2>BEST GAMING SITE EVER!</h2>
-            <p>LUGX Gaming is free Bootstrap 5 HTML CSS website template for your gaming websites. You can download and use this layout for commercial purposes. Please tell your friends about TemplateMo.</p>
-            <div class="search-input">
-              <form id="search" action="#">
-                <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
-                <button role="button">Search Now</button>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 offset-lg-2">
-          <div class="right-image">
-            <img src="assets/images/banner-image.jpg" alt="">
-            <span class="price">$22</span>
-            <span class="offer">-40%</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="features">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-md-6">
-          <a href="#">
-            <div class="item">
-              <div class="image">
-                <img src="assets/images/featured-01.png" alt="" style="max-width: 44px;">
-              </div>
-              <h4>Free Storage</h4>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <a href="#">
-            <div class="item">
-              <div class="image">
-                <img src="assets/images/featured-02.png" alt="" style="max-width: 44px;">
-              </div>
-              <h4>User More</h4>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <a href="#">
-            <div class="item">
-              <div class="image">
-                <img src="assets/images/featured-03.png" alt="" style="max-width: 44px;">
-              </div>
-              <h4>Reply Ready</h4>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <a href="#">
-            <div class="item">
-              <div class="image">
-                <img src="assets/images/featured-04.png" alt="" style="max-width: 44px;">
-              </div>
-              <h4>Easy Layout</h4>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section trending">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="section-heading">
-            <h6>Trending</h6>
-            <h2>Trending Games</h2>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="main-button">
-            <a href="shop.html">View All</a>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="item">
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/trending-01.jpg" alt=""></a>
-              <span class="price"><em>$28</em>$20</span>
-            </div>
-            <div class="down-content">
-              <span class="category">Action</span>
-              <h4>Assasin Creed</h4>
-              <a href="product-details.html"><i class="fa fa-shopping-bag"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="item">
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/trending-02.jpg" alt=""></a>
-              <span class="price">$44</span>
-            </div>
-            <div class="down-content">
-              <span class="category">Action</span>
-              <h4>Assasin Creed</h4>
-              <a href="product-details.html"><i class="fa fa-shopping-bag"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="item">
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/trending-03.jpg" alt=""></a>
-              <span class="price"><em>$64</em>$44</span>
-            </div>
-            <div class="down-content">
-              <span class="category">Action</span>
-              <h4>Assasin Creed</h4>
-              <a href="product-details.html"><i class="fa fa-shopping-bag"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="item">
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/trending-04.jpg" alt=""></a>
-              <span class="price">$32</span>
-            </div>
-            <div class="down-content">
-              <span class="category">Action</span>
-              <h4>Assasin Creed</h4>
-              <a href="product-details.html"><i class="fa fa-shopping-bag"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section most-played">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="section-heading">
-            <h6>TOP GAMES</h6>
-            <h2>Most Played</h2>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="main-button">
-            <a href="shop.html">View All</a>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-6">
-          <div class="item">
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/top-game-01.jpg" alt=""></a>
-            </div>
-            <div class="down-content">
-                <span class="category">Adventure</span>
-                <h4>Assasin Creed</h4>
-                <a href="product-details.html">Explore</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-6">
-          <div class="item">
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/top-game-02.jpg" alt=""></a>
-            </div>
-            <div class="down-content">
-                <span class="category">Adventure</span>
-                <h4>Assasin Creed</h4>
-                <a href="product-details.html">Explore</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-6">
-          <div class="item">
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/top-game-03.jpg" alt=""></a>
-            </div>
-            <div class="down-content">
-                <span class="category">Adventure</span>
-                <h4>Assasin Creed</h4>
-                <a href="product-details.html">Explore</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-6">
-          <div class="item">
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/top-game-04.jpg" alt=""></a>
-            </div>
-            <div class="down-content">
-                <span class="category">Adventure</span>
-                <h4>Assasin Creed</h4>
-                <a href="product-details.html">Explore</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-6">
-          <div class="item">
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/top-game-05.jpg" alt=""></a>
-            </div>
-            <div class="down-content">
-                <span class="category">Adventure</span>
-                <h4>Assasin Creed</h4>
-                <a href="product-details.html">Explore</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-6">
-          <div class="item">
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/top-game-06.jpg" alt=""></a>
-            </div>
-            <div class="down-content">
-                <span class="category">Adventure</span>
-                <h4>Assasin Creed</h4>
-                <a href="product-details.html">Explore</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section categories">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <div class="section-heading">
-            <h6>Categories</h6>
-            <h2>Top Categories</h2>
-          </div>
-        </div>
-        <div class="col-lg col-sm-6 col-xs-12">
-          <div class="item">
-            <h4>Action</h4>
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/categories-01.jpg" alt=""></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg col-sm-6 col-xs-12">
-          <div class="item">
-            <h4>Action</h4>
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/categories-05.jpg" alt=""></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg col-sm-6 col-xs-12">
-          <div class="item">
-            <h4>Action</h4>
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/categories-03.jpg" alt=""></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg col-sm-6 col-xs-12">
-          <div class="item">
-            <h4>Action</h4>
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/categories-04.jpg" alt=""></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg col-sm-6 col-xs-12">
-          <div class="item">
-            <h4>Action</h4>
-            <div class="thumb">
-              <a href="product-details.html"><img src="assets/images/categories-05.jpg" alt=""></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="section cta">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-5">
-          <div class="shop">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="section-heading">
-                  <h6>Our Shop</h6>
-                  <h2>Go Pre-Order Buy & Get Best <em>Prices</em> For You!</h2>
+        <div class="col-md-4">
+            <div class="card-box d-flex justify-content-between">
+                <div>
+                    <p>Total Siswa</p>
+                    <h3>{{ $totalSiswa }}</h3>
                 </div>
-                <p>Lorem ipsum dolor consectetur adipiscing, sed do eiusmod tempor incididunt.</p>
-                <div class="main-button">
-                  <a href="shop.html">Shop Now</a>
-                </div>
-              </div>
+                <div class="icon-box">👥</div>
             </div>
-          </div>
         </div>
-        <div class="col-lg-5 offset-lg-2 align-self-end">
-          <div class="subscribe">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="section-heading">
-                  <h6>NEWSLETTER</h6>
-                  <h2>Get Up To $100 Off Just Buy <em>Subscribe</em> Newsletter!</h2>
+
+        <div class="col-md-4">
+            <div class="card-box d-flex justify-content-between">
+                <div>
+                    <p>Pendaftar Baru</p>
+                    <h3>{{ $pendaftarBaru }}</h3>
                 </div>
-                <div class="search-input">
-                  <form id="subscribe" action="#">
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your email...">
-                    <button type="submit">Subscribe Now</button>
-                  </form>
-                </div>
-              </div>
+                <div class="icon-box">📝</div>
             </div>
-          </div>
         </div>
-      </div>
+
+        <div class="col-md-4">
+            <div class="card-box d-flex justify-content-between">
+                <div>
+                    <p>Diterima</p>
+                    <h3>{{ $diterima }}</h3>
+                </div>
+                <div class="icon-box">✅</div>
+            </div>
+        </div>
+
     </div>
-  </div>
 
-  <footer>
-    <div class="container">
-      <div class="col-lg-12">
-        <p>Copyright © 2048 LUGX Gaming Company. All rights reserved. &nbsp;&nbsp; <a rel="nofollow" href="https://templatemo.com" target="_blank">Design: TemplateMo</a></p>
-      </div>
+    <div class="card-box">
+        <div class="d-flex justify-content-between mb-3">
+            <h5>Data Siswa Terbaru</h5>
+            <a href="#" class="btn btn-primary btn-sm">Lihat Semua</a>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>NISN</th>
+                    <th>Status</th>
+                    <th>Tanggal</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($siswaTerbaru as $siswa)
+                <tr>
+                    <td>{{ $siswa->nama }}</td>
+                    <td>{{ $siswa->nisn }}</td>
+                    <td>
+                    @if($siswa->status == 'diterima')
+                        <span class="status-diterima">Diterima</span>
+                    @elseif($siswa->status == 'ditolak')
+                        <span class="status-ditolak">Ditolak</span>
+                    @else
+                        <span class="status-pending">Pending</span>
+                    @endif
+                </td>
+                    <td>{{ $siswa->created_at->format('d M Y') }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
-  </footer>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</div>
 
-  <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
-<script src="{{ asset('js/jquery.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-
-<script src="{{ asset('js/isotope.min.js') }}"></script>
-<script src="{{ asset('js/counter.js') }}"></script>
-<script src="{{ asset('js/owl-carousel.js') }}"></script>
-<script src="{{ asset('js/custom.js') }}"></script>
-
-  </body>
+</body>
 </html>

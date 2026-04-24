@@ -16,7 +16,7 @@ class UserMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user() && Auth::user()->role == 'user') {
+        if (Auth::user() && Auth::user()->role == 'siswa') {
             return $next($request);
         }
         return redirect('/dashboard');

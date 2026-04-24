@@ -5,6 +5,10 @@ use App\Http\Controllers\AdminDashboard\UsersAdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminDashboard\AdminController;
+use App\Http\Controllers\AdminDashboard\CalonSiswaController;
+use App\Http\Controllers\AdminDashboard\PendaftaranController;
+use App\Http\Controllers\SiswaDashboard\PendaftaranSiswaController;
+use App\Http\Controllers\SiswaDashboard\SiswaController;
 use App\Http\Controllers\UserPage\UsersController;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,22 +24,41 @@ Route::post('/register', [AuthController::class, 'processRegister'])->name('regi
 // ================= ADMIN =================
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () { 
 
-    Route::get('/dashboard', [AdminController::class, 'index'])
-        ->name('admin.dashboard');
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::resource('datasiswa', CalonSiswaController::class );
+
+   // PENDAFTARAN
+    Route::get('/pendaftaran', [PendaftaranController::class, 'index'])->name('pendaftaran.index');
+    Route::get('/pendaftaran/{id}', [PendaftaranController::class, 'show'])->name('pendaftaran.show');
+    Route::get('/pendaftaran/{id}/terima', [PendaftaranController::class, 'terima'])->name('pendaftaran.terima');
+    Route::get('/pendaftaran/{id}/tolak', [PendaftaranController::class, 'tolak'])->name('pendaftaran.tolak');
+    
+
+    // DATA SISWA
+    Route::get('/datasiswa', [CalonSiswaController::class, 'index'])->name('datasiswa.index');
+    Route::get('/datasiswa/{id}', [CalonSiswaController::class, 'show'])->name('datasiswa.show');
+    Route::get('/datasiswa/{id}/edit', [CalonSiswaController::class, 'edit'])->name('datasiswa.edit');
+    Route::put('/datasiswa/{id}', [CalonSiswaController::class, 'update'])->name('datasiswa.update');
+    Route::delete('/datasiswa/{id}', [CalonSiswaController::class, 'destroy'])->name('datasiswa.destroy');
+
 
 });
 
 
-// ================= USER =================
-Route::middleware(['auth', 'user'])->prefix('user')->group(function () {
+Route::middleware(['auth', 'user'])->prefix('siswa')->group(function () {
 
-    Route::get('/dashboard', function () {
-        return 'Dashboard User';
-    })->name('user.dashboard');
+    Route::get('/dashboard', [SiswaController::class, 'index'])->name('siswa.dashboard');
 
+    Route::get('/pendaftaran/create', [PendaftaranSiswaController::class, 'create'])->name('siswa.pendaftaran.create');
+
+    Route::post('/pendaftaran/store', [PendaftaranSiswaController::class, 'store'])->name('siswa.pendaftaran.store');
 });
 
+Route::post('/logout', function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
 
-// LOGOUT
-
+    return redirect('/login');
+})->name('logout');
 ?>
