@@ -42,8 +42,8 @@
                         <button class="btn btn-danger btn-sm">Hapus</button>
                     </form>
 
-                    <a href="{{ route('datasiswa.terima', $item->id) }}" class="btn btn-success btn-sm">Diterima</a>
-                    <a href="{{ route('datasiswa.tolak', $item->id) }}" class="btn btn-secondary btn-sm">Ditolak</a>
+                    <a href="{{ route('datasiswa.diterima', $item->id) }}" class="btn btn-success btn-sm">Diterima</a>
+                  
                     <a href="{{ route('datasiswa.show', $item->id) }}" class="btn btn-info btn-sm">Detail</a>
                 </td>
             </tr>

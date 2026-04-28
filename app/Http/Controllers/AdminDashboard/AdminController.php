@@ -11,14 +11,18 @@ class AdminController extends Controller
     {
         $totalSiswa = CalonSiswa::count();
         $pendaftarBaru = CalonSiswa::whereMonth('created_at', date('m'))->count();
+        $pendaftar = CalonSiswa::where('status', 'pending')->count();
         $diterima = CalonSiswa::where('status', 'diterima')->count();
+        $ditolak = CalonSiswa::where('status', 'ditolak')->count();
 
         $siswaTerbaru = CalonSiswa::latest()->take(5)->get();
 
         return view('admin/dashboard', compact(
             'totalSiswa',
             'pendaftarBaru',
+            'pendaftar',
             'diterima',
+            'ditolak',
             'siswaTerbaru'
         ));
 

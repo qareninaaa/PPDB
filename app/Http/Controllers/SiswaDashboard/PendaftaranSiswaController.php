@@ -22,7 +22,7 @@ class PendaftaranSiswaController extends Controller
         $cek = CalonSiswa::where('user_id', auth()->id())->first();
 
         if ($cek) {
-            return redirect('/status')->with('error', 'Kamu sudah melakukan pendaftaran!');
+            return redirect('/siswa/dashboard')->with('error', 'Kamu sudah melakukan pendaftaran!');
         }
 
         return view('siswa.pendaftaran.create');
@@ -69,6 +69,6 @@ class PendaftaranSiswaController extends Controller
         'file_ijazah' => $ijazah
     ]);
 
-    return redirect('/status')->with('success', 'Pendaftaran berhasil!');
+    return redirect('/siswa/dashboard')->with('success', 'Pendaftaran berhasil!');
     }
 }

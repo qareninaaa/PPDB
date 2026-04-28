@@ -197,7 +197,7 @@ h3 {
     <a href="{{ route('admin.dashboard') }}">Dashboard</a>
     <a href="{{ route('datasiswa.index') }}">Data Siswa</a>
     <a href="{{ route('pendaftaran.index') }}">Pendaftaran</a>
-    <a href="#">Pengumuman</a>
+    <a href="{{ route('pengumuman.index') }}">Pengumuman</a>
     <form action="{{ route('logout') }}" method="POST" style="margin: 20px;">
     @csrf
     <button type="submit" class="btn btn-light w-100">Logout</button>

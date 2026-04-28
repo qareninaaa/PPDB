@@ -5,7 +5,7 @@
 
     <h3>Edit Siswa</h3>
 
-    <form action="{{ route('siswa.update', $siswa->id) }}" method="POST">
+    <form action="{{ route('datasiswa.update', $siswa->id) }}" method="POST">
         @csrf
         @method('PUT')
 
